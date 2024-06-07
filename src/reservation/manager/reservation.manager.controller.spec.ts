@@ -1,16 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ApiReservationManagerController } from './api.reservation.manager.controller';
+import { ReservationManagerController } from './reservation.manager.controller';
 
 describe('ApiReservationManagerController', () => {
-  let controller: ApiReservationManagerController;
+  let controller: ReservationManagerController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ApiReservationManagerController],
+      controllers: [ReservationManagerController],
     }).compile();
 
-    controller = module.get<ApiReservationManagerController>(
-      ApiReservationManagerController,
+    controller = module.get<ReservationManagerController>(
+      ReservationManagerController,
     );
   });
 

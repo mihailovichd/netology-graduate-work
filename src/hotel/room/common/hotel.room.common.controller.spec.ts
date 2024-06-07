@@ -1,15 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ApiHotelAdminController } from './api.hotel.admin.controller';
+import { HotelRoomCommonController } from './hotel.room.common.controller';
 
 describe('ApiController', () => {
-  let controller: ApiHotelAdminController;
+  let controller: HotelRoomCommonController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ApiHotelAdminController],
+      controllers: [HotelRoomCommonController],
     }).compile();
 
-    controller = module.get<ApiHotelAdminController>(ApiHotelAdminController);
+    controller = module.get<HotelRoomCommonController>(
+      HotelRoomCommonController,
+    );
   });
 
   it('should be defined', () => {

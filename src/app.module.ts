@@ -8,28 +8,46 @@ import { HotelModule } from './hotel/hotel.module';
 import { ReservationModule } from './reservation/reservation.module';
 import { SupportModule } from './support/support.module';
 import { RouterModule } from '@nestjs/core';
-import { ApiHotelModule } from './api/hotel/api.hotel.module';
+import { HotelRoomModule } from './hotel/room/hotel.room.module';
+import { AuthModule } from './auth/auth.module';
 
 // TODO: Interceptors, Pipes, Guards, Exceptions
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGODB_URI, {
+    MongooseModule.forRoot(process.env.MONGO_URL, {
       tls: true,
       tlsCAFile: process.env.PATH_CA,
-      authSource: process.env.MONGODB_NAME,
     }),
     UserModule,
     HotelModule,
     ReservationModule,
     SupportModule,
+    AuthModule,
     RouterModule.register([
       {
         path: 'api',
-        module: ApiHotelModule,
+        module: AppModule,
+        children: [
+          {
+            path: '/',
+            module: HotelModule,
+          },
+          {
+            path: '/',
+            module: HotelRoomModule,
+          },
+          {
+            path: '/',
+            module: ReservationModule,
+          },
+          {
+            path: '/',
+            module: AuthModule,
+          },
+        ],
       },
     ]),
-    ApiHotelModule,
   ],
   controllers: [AppController],
   providers: [AppService],
