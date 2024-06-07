@@ -1,8 +1,8 @@
 {
-  "name": "diplom",
+  "name": "netology-graduate-work",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "My graduate work on the course Netology Node.JS developer.",
+  "author": "mihailovich.",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

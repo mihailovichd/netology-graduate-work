@@ -11,7 +11,6 @@ import { RouterModule } from '@nestjs/core';
 import { HotelRoomModule } from './hotel/room/hotel.room.module';
 import { AuthModule } from './auth/auth.module';
 
-// TODO: Interceptors, Pipes, Guards, Exceptions
 @Module({
   imports: [
     ConfigModule.forRoot(),
