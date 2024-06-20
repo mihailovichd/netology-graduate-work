@@ -2,8 +2,11 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   Param,
   Post,
+  Req,
+  Res,
   UseGuards,
 } from '@nestjs/common';
 import { ReservationService } from '../reservation.service';
@@ -23,11 +26,10 @@ export class ReservationClientController {
     return this.reservationService.addReservation(body);
   }
 
-  // Auth & Guards
-  // @Get()
-  // getReservations() {
-  //
-  // }
+  @Get()
+  getReservation(@Req() req) {
+    return this.reservationService.getReservations({ userId: req.user._id });
+  }
 
   @Delete(':id')
   deleteReservation(@Param('id') id: string) {
